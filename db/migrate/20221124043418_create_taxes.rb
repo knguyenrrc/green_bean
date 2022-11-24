@@ -5,6 +5,7 @@ class CreateTaxes < ActiveRecord::Migration[7.0]
       t.float :gst
       t.float :hst
       t.float :total_tax_rate
+      t.references :Province, null: false, foreign_key: true
 
       t.timestamps
     end
