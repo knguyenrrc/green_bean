@@ -1,0 +1,18 @@
+id,Active (0/1),Name,Parent category,Root category (0/1)
+12,1,Jacket and Coat,For females,0
+13,1,Pants Shorts,For females,0
+15,1,Dresses,For females,0
+16,1,Sweater,For females,0
+17,1,Tops,For females,0
+18,1,Tunic,For females,0
+19,1,Shoes,For females,0
+20,1,Two-piece,For females,0
+23,1,Skirts,For females,0
+27,1,Blouse,For females,0
+35,1,Jackets,For females,0
+33,1,Shirt,For males,0
+34,1,T-shirt,For males,0
+51,1,Long sleeve,For males,0
+52,1,Trousers shorts,For males,0
+55,1,Sweaters,For males,0
+60,1,Sweat suit,For males,0

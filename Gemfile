@@ -27,6 +27,10 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'main'
+
+gem 'quick_random_records'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
