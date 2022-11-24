@@ -4,9 +4,9 @@ class CreateOrderLineItems < ActiveRecord::Migration[7.0]
       t.float :price
       t.integer :quantity
       t.float :total_tax_rate
-      t.references :Order, null: false, foreign_key: true
-      t.references :Product, null: false, foreign_key: true
-      t.references :Tax, null: false, foreign_key: true
+      t.references :Order, null: false, foreign_key: false
+      t.references :Product, null: false, foreign_key: false
+      t.references :Tax, null: false, foreign_key: false
 
       t.timestamps
     end

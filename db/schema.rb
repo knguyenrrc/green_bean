@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_044204) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_164459) do
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.string "author_type"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  end
+
   create_table "addresses", force: :cascade do |t|
     t.string "address"
     t.string "city"
@@ -19,6 +33,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_044204) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["Province_id"], name: "index_addresses_on_Province_id"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -90,10 +116,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_044204) do
 
   add_foreign_key "addresses", "Provinces"
   add_foreign_key "customers", "Addresses"
-  add_foreign_key "order_line_items", "Orders"
-  add_foreign_key "order_line_items", "Products"
-  add_foreign_key "order_line_items", "Taxes"
-  add_foreign_key "orders", "Customers"
-  add_foreign_key "products", "Categories"
   add_foreign_key "taxes", "Provinces"
 end
