@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<title>Contact page</title>
+<div class="container">
+  <div class="content">
+    <% @contacts.each do |contact| %>
+      <%= contact.contact_detail %>
+      <br>
+    <% end %>
+  </div>
+</div>

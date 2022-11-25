@@ -1,2 +1,16 @@
 <div id="<%= dom_id product %>">
+    <h2><%= product.product_name %></h2>
+    <p>
+        <div>Category: <%= product.Category.category_name %></div>
+        <div>Price: $<%= product.price %></div>
+        <br>
+    </p>
+
+    <% if product.image.present? %>
+        <div class="card-image">
+        <figure class="image">
+            <%= image_tag product.image %>
+        </figure>
+        </div>
+    <% end %>
 </div>

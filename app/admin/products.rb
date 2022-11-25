@@ -22,6 +22,7 @@ ActiveAdmin.register Product do
     column :id
     column :product_name
     column :price
+    # column :image
     column :categories do |product|
       # product.categories.map { |pd| pd.product_name }.join(", ").html_safe
       category = Category.find(product.Category_id)
@@ -41,6 +42,9 @@ ActiveAdmin.register Product do
         # product.categories.map { |pd| pd.product_name }.join(", ").html_safe
         category = Category.find(product.Category_id)
         link_to category.category_name, admin_category_path(category)
+      end
+      row :image do
+        image_tag url_for(product.image)
       end
     end
   end
@@ -72,6 +76,7 @@ ActiveAdmin.register Product do
       #     # cat.categories.map { |pd| pd.product_name }.join(", ").html_safe
       #   category = Category.find(cat.Category_id)
       #   link_to category.category_name, admin_category_path(category_name)
+      f.input :image, as: :file, hint: f.object.image.attached? ? image_tag(f.object.image) : content_tag(:span, "No Image Yet")
       # end
     end
 
