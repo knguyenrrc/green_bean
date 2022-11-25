@@ -116,5 +116,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_164459) do
 
   add_foreign_key "addresses", "Provinces"
   add_foreign_key "customers", "Addresses"
+  add_foreign_key "order_line_items", "Orders"
+  add_foreign_key "order_line_items", "Products"
+  add_foreign_key "order_line_items", "Taxes"
+  add_foreign_key "orders", "Customers"
   add_foreign_key "taxes", "Provinces"
 end
