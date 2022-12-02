@@ -44,7 +44,8 @@ ActiveAdmin.register Product do
         link_to category.category_name, admin_category_path(category)
       end
       row :image do
-        image_tag url_for(product.image)
+        # image_tag url_for(product.image, size:"250x250")
+        image_tag(product.image, size:"250x250")
       end
     end
   end
@@ -76,7 +77,7 @@ ActiveAdmin.register Product do
       #     # cat.categories.map { |pd| pd.product_name }.join(", ").html_safe
       #   category = Category.find(cat.Category_id)
       #   link_to category.category_name, admin_category_path(category_name)
-      f.input :image, as: :file, hint: f.object.image.attached? ? image_tag(f.object.image) : content_tag(:span, "No Image Yet")
+      f.input :image, as: :file, hint: f.object.image.attached? ? image_tag(f.object.image, size:"250x250") : content_tag(:span, "No Image Yet")
       # end
     end
 

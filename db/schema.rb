@@ -113,29 +113,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_040417) do
   create_table "order_line_items", force: :cascade do |t|
     t.float "price"
     t.integer "quantity"
-    t.float "total_tax_rate"
     t.integer "Order_id", null: false
     t.integer "Product_id", null: false
-    t.integer "Tax_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["Order_id"], name: "index_order_line_items_on_Order_id"
     t.index ["Product_id"], name: "index_order_line_items_on_Product_id"
-    t.index ["Tax_id"], name: "index_order_line_items_on_Tax_id"
   end
 
   create_table "orders", force: :cascade do |t|
+    t.float "sub_amount"
+    t.float "total_tax_rate"
     t.float "total_amount"
     t.date "date_created"
     t.integer "Customer_id", null: false
+    t.integer "Tax_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["Customer_id"], name: "index_orders_on_Customer_id"
+    t.index ["Tax_id"], name: "index_orders_on_Tax_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "product_name"
     t.float "price"
+    t.float "sale_price"
+    t.text "description"
     t.integer "Category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -166,7 +169,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_040417) do
   add_foreign_key "customers", "Addresses"
   add_foreign_key "order_line_items", "Orders"
   add_foreign_key "order_line_items", "Products"
-  add_foreign_key "order_line_items", "Taxes"
   add_foreign_key "orders", "Customers"
+  add_foreign_key "orders", "Taxes"
   add_foreign_key "taxes", "Provinces"
 end

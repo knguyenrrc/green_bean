@@ -34,6 +34,7 @@ gem 'quick_random_records'
 gem 'activeadmin'
 gem 'devise'
 gem 'image_processing'
+gem 'kaminari'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

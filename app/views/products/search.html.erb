@@ -1,0 +1,12 @@
+<div class="container">
+  <h3 class="title is-3">
+  Found <%= pluralize(@products.count, 'products') %>  found when searching for keyword: <%= params[:keywords] %>
+  </h3>
+  <div class="content">
+    <ul>
+      <% @products.each do |prod| %>
+        <li><%= link_to prod.product_name, prod %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
