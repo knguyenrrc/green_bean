@@ -1,2 +1,16 @@
 <div id="<%= dom_id category %>">
+    <div class="container">
+    <h3 class="title is-3"><%= category.category_name %></h3>
+    <article>
+        <div class="message is-dark">
+        <p>Products in this category:</p>
+        </div>
+        <div class="message-body">
+        <% category.products.each do |prod| %>
+            <%= link_to prod.product_name, '/products/' + prod.id.to_s %>
+            <br>
+        <% end %>
+        </div>
+    </article>
+    </div>
 </div>

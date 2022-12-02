@@ -2,13 +2,13 @@
 
 <h1>Categories</h1>
 
+<nav class="pagination" role="navigation" aria-label="pagination"><%= paginate @categories %> </nav>
 <div id="categories">
   <% @categories.each do |category| %>
-    <%= render category %>
     <p>
-      <%= link_to "Show this category", category %>
+      <%= link_to category.category_name, category %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New category", new_category_path %>
+<nav class="pagination" role="navigation" aria-label="pagination"><%= paginate @categories %> </nav>
+<%# <%= link_to "New category", new_category_path %>

@@ -3,17 +3,27 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @products = Product.order(created_at: :asc).page(params[:page])
   end
 
   # GET /products/1 or /products/1.json
   def show
+    @product = Product.find(params[:id])
+  end
+
+  def search
+    wildcard_search = "%#{params[:keywords]}%"
+    if params[:category] == ""
+      @products = Product.where("product_name LIKE ?", wildcard_search)
+    else
+      @products = Product.where("product_name LIKE ?", wildcard_search).where("category_id = ?", params[:category])
+    end
   end
 
   # GET /products/new
-  def new
-    @product = Product.new
-  end
+  # def new
+  #   @product = Product.new
+  # end
 
   # GET /products/1/edit
   def edit
