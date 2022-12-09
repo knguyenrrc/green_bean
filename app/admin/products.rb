@@ -25,7 +25,7 @@ ActiveAdmin.register Product do
         link_to category.category_name, admin_category_path(category)
       end
       row :image do
-        image_tag(product.image, size:"250x250")
+        image_tag(product.image, size:"250x250") if product.image.attached?
       end
     end
   end
