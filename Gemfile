@@ -36,6 +36,7 @@ gem 'devise'
 gem 'image_processing'
 gem 'kaminari'
 gem "google-cloud-storage", "~> 1.11", require: false
+gem 'letter_opener'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
