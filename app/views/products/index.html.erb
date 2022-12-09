@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Green Bean Products</h1>
+<%# <h1>Green Bean Products: </h1> %>
 
 <nav class="pagination" role="navigation" aria-label="pagination"><%= paginate @products %> </nav>
 <div id="products">
@@ -9,6 +9,7 @@
     <p>
       <%= link_to product.product_name, product %>
     </p>
+    <br>
   <% end %>
 </div>
 <nav class="pagination" role="navigation" aria-label="pagination"><%= paginate @products %> </nav>
