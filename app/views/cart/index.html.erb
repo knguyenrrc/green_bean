@@ -1,0 +1,28 @@
+<summary>
+    Cart
+    <% if cart.present? %>
+        <sup><%= cart.size %></sup>
+    <% end %>
+</summary>
+<% if cart.present? %>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% cart.each do | item | %>
+                <tr>
+                <td><%= link_to item.product_name, Product.find(item.id) %> <%= button_to 'Remove', cart_path(item.id), method: :delete, form_class: "btnRemove" %></td>
+                <td><sup>$</sup><%= item.price %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+<% else %>
+    <p>No items in your cart.</p>
+<% end %>
