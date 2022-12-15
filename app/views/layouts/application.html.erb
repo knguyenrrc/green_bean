@@ -9,38 +9,10 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
   </head>
 
-  <%# <% if flash[:notice] %>
-    <%# <p>
-      <%= flash[:notice] %>
-    <%# </p> %>
-  <%# <% end %>
-
   <body>
-    <%# <p class="notice"><%= notice %>
-    <p class="alert"><%= alert %></p>
     <%= render "layouts/menu" %>
     <%= yield %>
-    <details>
-        <summary>
-            Cart
-            <% if cart.present? %>
-              <sup><%= cart.size %></sup>
-            <% end %>
-        </summary>
-        <% if cart.present? %>
-          <ul>
-            <% cart.each do |product| %>
-              <li>
-                <%= product.product_name %> <%= button_to 'Remove', cart_path(product.id), method: :delete, form_class: "btnRemove" %>
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>No items in your cart.</p>
-        <% end %>
-      </details>
   </body>
 </html>
