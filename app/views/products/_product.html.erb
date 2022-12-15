@@ -3,6 +3,7 @@
     <p>
         <div>Category: <%= product.Category.category_name %></div>
         <div>Price: $<%= product.price %></div>
+        <div>Description: <%= product.description %></div>
         <br>
     </p>
 
@@ -14,3 +15,15 @@
         </div>
     <% end %>
 </div>
+
+<% if cart.include?(product) %>
+    <%= button_to cart_path(product), method: :delete do %>
+        Remove from cart
+    <% end %>
+<% else %>
+    <%= form_with url: cart_index_path, method: :post do %>
+        <%= hidden_field_tag(:id, product.id) %>
+        <%= button_tag 'Add to cart' %>
+
+    <% end %>
+<% end %>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :customers do
+    get "/customers/sign_up" => "devise/registrations#new", :as => :new_customer_registration_path
+  end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :categories
@@ -14,4 +17,12 @@ Rails.application.routes.draw do
   root "products#index"
   get "/contact", to: "contact#index", as: "contact" # contact_path
   get "/about", to: "about#index", as: "about" # about_path
+
+  get "/shopping_cart", to: "cart#index", as: "shopping_cart" # cart_path
+
+  scope "/checkout" do
+    post "create", to: "checkout#create", as: "checkout_create"
+    get "success", to: "checkout#success", as: "checkout_success"
+    get "cancel", to: "checkout#cancel", as: "checkout_cancel"
+  end
 end
